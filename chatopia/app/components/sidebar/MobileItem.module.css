@@ -1,0 +1,27 @@
+.link{
+    display: flex; 
+    padding: 1rem; 
+    column-gap: 0.75rem; 
+    justify-content: center; 
+    width: 100%; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 600; 
+    line-height: 1.5rem; 
+    color: #6B7280; 
+}
+
+.link:hover{
+    color: #000000; 
+    background-color: #F3F4F6; 
+}
+
+.active{
+    color: #000000; 
+    background-color: #F3F4F6; 
+}
+
+.icon{
+    width: 1.5rem; 
+    height: 1.5rem; 
+}

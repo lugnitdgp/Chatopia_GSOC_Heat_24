@@ -1,0 +1,16 @@
+.wrapper{
+    display: flex; 
+    position: fixed; 
+    bottom: 0; 
+    z-index: 40; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    background-color: #ffffff; 
+}
+
+@media (min-width: 1024px) {
+    .wrapper{
+        display: none; 
+    }
+}

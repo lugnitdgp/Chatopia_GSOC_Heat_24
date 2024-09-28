@@ -1,0 +1,52 @@
+.enterBg{
+    transition: all 0.3s ease-out;
+}
+
+.enterFromBg{
+    opacity: 0;
+}
+
+.enterToBg{
+    opacity: 1;
+}
+
+.leaveBg{
+    transition: all 0.3s ease-in;
+}
+
+.leaveFromBg{
+    opacity: 1;
+}
+
+.leaveToBg{
+    opacity: 0;
+}
+
+.bg{
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+    background-color: rgba(243, 244, 246, 0.5); 
+    transition: opacity 0.3s ease-in;
+}
+
+.wrapper{
+    overflow-y: auto; 
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+    z-index: 10; 
+}
+
+.container{
+    display: flex; 
+    padding: 1rem; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100%; 
+    text-align: center;     
+}

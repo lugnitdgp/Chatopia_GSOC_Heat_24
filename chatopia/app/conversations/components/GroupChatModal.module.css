@@ -1,0 +1,52 @@
+.inputWrapper{
+    margin-top: 3rem; 
+}
+
+.inputContainer{
+    padding-bottom: 3rem; 
+    border-bottom-width: 1px; 
+    border-color: #1a202c;
+}
+
+.inputContainer>h2{
+    font-size: 1rem;
+    line-height: 1.5rem; 
+    font-weight: 600; 
+    line-height: 1.75rem; 
+    color: #111827; 
+}
+
+.inputContainer>p{
+    margin-top: 0.25rem; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    line-height: 1.5rem; 
+    color: #4B5563; 
+}
+
+.inputs{
+    display: flex; 
+    margin-top: 2.5rem; 
+    flex-direction: column; 
+    row-gap: 2rem; 
+}
+
+.imgUploader{
+    display: flex; 
+    margin-top: 0.5rem; 
+    column-gap: 0.75rem; 
+    align-items: center;     
+}
+
+.uploadBtn{
+    all:unset;
+}
+
+
+.actions{
+    display: flex; 
+    margin-top: 1.5rem; 
+    column-gap: 1.5rem; 
+    justify-content: flex-end; 
+    align-items: center;     
+}

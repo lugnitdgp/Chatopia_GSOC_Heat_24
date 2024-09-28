@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// id is a string because it's a UUID
+// name --> user's name
+// email --> user's email
+// emailVerified --> True if the email was verified
+// image --> user's profile picture
+// hashedPassword --> user's hashed password
+// createdAt --> user's creation date
+// updatedAt --> user's last update date
+// accounts --> user's accounts
+// messages --> user's messages
+// userConversations --> given user's conversations
+// userSeenMessages --> given user's seen messages
+
+model User {
+  id String @id @default(uuid()) @db.Uuid
+  name String?
+  email String? @unique
+  emailVerified DateTime?
+  image String?
+  hashedPassword String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  contacts  String[] @default([])
+
+  accounts Account[]
+  messages Message[]
+  userConversations UserConversation[]
+  userSeenMessages UserSeenMessage[]
+}
+
+// id is a string because it's a UUID
+// createdAt --> conversation's creation date , for displaying start of conversation
+// lastMessageAt --> conversation's last message date , for displaying last message time in conversation list
+// name --> conversation's name , for group name . No need of name for 1-to-1 conversation
+// isGroup --> True if it's a group conversation , if it's 1-to-1 conversation then it's False or not present
+// messages --> conversation's messages
+// userConversations --> users in the conversation
+
+model Conversation {
+  id String @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now())
+  lastMessageAt DateTime @default(now())
+  name String?
+  isGroup Boolean?
+  image String?
+
+  messages Message[]
+  userConversations UserConversation[]
+}
+
+// id is a string because it's a UUID
+// body --> message's text content
+// image --> message's image content
+// createdAt --> message's creation date
+// conversationId --> id of the conversation to which this message belongs
+// conversation --> to which conversation this message belongs
+// senderId --> id of the user who sent this message
+// sender --> user who sent this message
+// userSeenMessages --> users who have seen this message
+
+model Message {
+  id String @id @default(uuid()) @db.Uuid
+  body String?
+  image String?
+  createdAt DateTime @default(now())
+
+  conversationId String @db.Uuid
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  senderId String @db.Uuid
+  sender User @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  userSeenMessages UserSeenMessage[]
+}
+
+// JOINS Conversation & Users of the conversation 
+// @@id([userId, conversationId]) --> composite primary key
+
+model UserConversation {
+  userId String @db.Uuid
+  user User @relation(fields: [userId], references: [id])
+
+  conversationId String @db.Uuid
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@id([userId, conversationId])
+}
+
+// JOINS User & Messages of the user
+// @@id([userId, messageId]) --> composite primary key
+
+model UserSeenMessage {
+  userId String @db.Uuid
+  user User @relation(fields: [userId], references: [id])
+
+  messageId String @db.Uuid
+  message Message @relation(fields: [messageId], references: [id] , onDelete: Cascade)
+
+  @@id([userId, messageId])
+}
+
+// id is a string because it's a UUID
+// userId --> id of the user to which this account belongs
+// type --> account's type
+// provider --> account's provider
+// providerAccountId --> account's provider account id
+// refresh_token --> account's refresh token
+// access_token --> account's access token
+// expires_at --> account's token expiration date
+// token_type --> account's token type
+// scope --> account's scope
+// id_token --> account's id token
+// session_state --> account's session state
+
+
+model Account {
+  id String @id @default(uuid()) @db.Uuid
+  userId String @db.Uuid
+  type String
+  provider String
+  providerAccountId String
+  refresh_token String?
+  access_token String?
+  expires_at Int?
+  token_type String?
+  scope String?
+  id_token String?
+  session_state String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Request {
+  id String @id @default(uuid()) @db.Uuid
+  senderId String @db.Uuid
+  recverId String @db.Uuid
+  status String
+  createdAt DateTime @default(now())
+  @@unique([senderId, recverId])
+}

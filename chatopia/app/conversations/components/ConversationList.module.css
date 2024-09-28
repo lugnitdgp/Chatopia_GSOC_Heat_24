@@ -1,0 +1,61 @@
+.wrapper{
+    overflow-y: auto; 
+    position: fixed; 
+    top: 0;
+    bottom: 0; 
+    padding-bottom: 5rem; 
+    border-right-width: 1px; 
+    border-color: #E5E7EB; 
+}
+
+.open{
+    display: none;
+}
+
+.close{
+    display: block; 
+    left: 0; 
+    width: 100%; 
+}
+
+.wrapper>div{
+    padding-left: 1.25rem;
+    padding-right: 1.25rem; 
+}
+
+.container{
+    display: flex; 
+    padding-top: 1rem; 
+    margin-bottom: 1rem; 
+    justify-content: space-between; 
+}
+
+.heading{
+    font-size: 1.5rem;
+    line-height: 2rem; 
+    font-weight: 700;      
+}
+
+.addMessageIcon{
+    padding: 0.5rem; 
+    border-radius: 9999px; 
+    color: #4B5563; 
+    background-color: #F3F4F6; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+    cursor: pointer;     
+}
+
+.addMsgIcon:hover{
+    opacity: 0.75; 
+}
+
+@media (min-width: 1024px){
+    .wrapper{
+        display: block; 
+        left: 5rem; 
+        padding-bottom: 0; 
+        width: 20rem; 
+    }
+}

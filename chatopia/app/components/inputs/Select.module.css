@@ -1,0 +1,17 @@
+.wrapper{
+    z-index: 100;
+}
+
+.label{
+    display: block; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 500; 
+    line-height: 1.5rem; 
+    color: #111827;   
+}
+
+.control{
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+}

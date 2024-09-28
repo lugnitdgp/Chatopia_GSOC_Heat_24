@@ -1,0 +1,56 @@
+.alert{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 9999px; 
+    width: 3rem; 
+    height: 3rem; 
+    background-color: #FEE2E2; 
+}
+
+.alertIcon{
+    width: 1.5rem; 
+    height: 1.5rem; 
+    color: #DC2626; 
+}
+
+.delete{
+    margin-top: 0.75rem; 
+    text-align: center;     
+}
+
+.confirmText{
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    color: #6B7280; 
+}
+
+.btnContainer{
+    margin-top: 1.25rem; 
+}
+
+@media (min-width: 640px){
+    .container{
+        display: flex; 
+        align-items: flex-start; 
+    }
+
+    .alert{
+        margin-left: 0;
+        margin-right: 0; 
+        width: 2.5rem; 
+        height: 2.5rem; 
+    }
+
+    .delete{
+        margin-top: 0; 
+        margin-left: 1rem; 
+        text-align: left; 
+    }
+
+    .btnContainer{
+        display: flex; 
+        margin-top: 1rem; 
+        flex-direction: row-reverse; 
+    }
+}

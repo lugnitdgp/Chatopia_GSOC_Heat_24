@@ -1,0 +1,12 @@
+.container{
+    display: none; 
+    height: 100%;
+    
+}
+
+@media (min-width: 1024px) { 
+    .container{
+        display: block; 
+        padding-left: 20rem; 
+    }
+}

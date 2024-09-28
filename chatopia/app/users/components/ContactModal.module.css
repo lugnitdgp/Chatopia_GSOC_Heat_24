@@ -1,0 +1,15 @@
+.send{
+    background-color: var(--primary-color);
+    border: none;
+    margin-left: 0.75rem;
+    padding: 0.5rem; 
+    border-radius: 9999px; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+    cursor: pointer;  
+}
+
+.send:hover{
+    cursor: pointer;
+}

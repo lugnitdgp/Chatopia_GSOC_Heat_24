@@ -1,0 +1,40 @@
+.link{
+    display: flex; 
+    padding: 0.75rem; 
+    column-gap: 0.75rem; 
+    border-radius: 0.375rem; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 600; 
+    line-height: 1.5rem; 
+    color: #6B7280;
+    transition: all 0.2s;
+}
+
+.link:hover{
+    color: #000000; 
+    background-color: #F3F4F6; 
+}
+
+.active{
+    color: #000000; 
+    background-color: #F3F4F6; 
+}
+
+.icon{
+    flex-shrink: 0; 
+    width: 1.5rem; 
+    height: 1.5rem; 
+}
+
+.linkLabel{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;  
+}

@@ -1,0 +1,173 @@
+.enterBg{
+    transition: all 0.3s ease-out;
+}
+
+.enterBgFrom{
+    opacity: 0;
+}
+
+.enterBgTo{
+    opacity: 1;
+}
+
+.leaveBg{
+    transition: all 0.2s ease-in;
+}
+
+.leaveBgFrom{
+    opacity: 1;
+}
+
+.leaveBgTo{
+    opacity: 0;
+}
+
+.bg{
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+    background-color: rgba(68, 68, 68, 0.9); 
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+}
+
+.wrapper{
+    overflow-y: auto; 
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+    z-index: 10; 
+}
+
+.container{
+    display: flex; 
+    padding: 1rem; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100%; 
+    text-align: center; 
+}
+
+.enterModal{
+    transition: all 0.3s ease-out;
+}
+
+.enterModalFrom{
+    transform: translateY(1rem);
+    opacity: 0;
+}
+
+.enterModalTo{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.leaveModal{
+    transition: all 0.2s ease-in;
+}
+
+.leaveModalFrom{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.leaveModalTo{
+    opacity: 0;
+    transform: translateY(1rem);
+}
+
+.dialogPanel{
+    overflow: hidden; 
+    position: relative; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    padding-bottom: 1rem; 
+    border-radius: 0.5rem; 
+    width: 100%; 
+    text-align: left; 
+    background-color: #ffffff; 
+    transition : all 0.3s ease-in-out;
+}
+
+.close{
+    display: none; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    z-index: 10; 
+    padding-top: 1rem; 
+    padding-right: 1rem; 
+}
+
+.closeBtn{
+    border-radius: 0.375rem; 
+    color: #9CA3AF; 
+    background-color: #ffffff; 
+}
+
+.closeBtn:hover{
+    color: #6B7280; 
+    background-color: #F9FAFB; 
+}
+
+.closeBtn:focus{
+    color: #6B7280; 
+    background-color: #F9FAFB; 
+}
+
+.closeText{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0; 
+}
+
+.closeIcon{
+    width: 1.5rem; 
+    height: 1.5rem; 
+
+}
+
+@media (min-width: 640px){
+    .container{
+        padding: 0;
+    }
+
+    .enterModalFrom{
+        transform: translateY(0) scale(0.9);
+    }
+
+    .enterModalTo{
+        transform: scale(1);
+    }
+
+    .leaveModalFrom{
+        transform: scale(1);
+    }
+
+    .leaveModalTo{
+        transform: translateY(0) scale(0.95);
+    }
+
+    .dialogPanel{
+        padding: 1.5rem; 
+        margin-top: 2rem;
+        margin-bottom: 2rem; 
+        width: 100%; 
+        max-width: 32rem; 
+    }
+
+    .close{
+        display: block;
+    }
+}

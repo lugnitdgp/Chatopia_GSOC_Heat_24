@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - AUTH_SECRET=FYeyLUAdAvKcKuz6EZth/j3G2Hy5fUumF9VhuOxy0A4=
+      - NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=wuuk33fv
+      - AUTH_GITHUB_ID=Ov23li8sGYEYkjxaPtcK
+      - AUTH_GITHUB_SECRET=69cb0f8249dddcc06bd9398d670f7d18c7f82ccc
+
+volumes:
+  app:

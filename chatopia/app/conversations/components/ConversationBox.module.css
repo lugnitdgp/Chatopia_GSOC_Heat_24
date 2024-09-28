@@ -1,0 +1,85 @@
+.wrapper{
+    display: flex; 
+    position: relative; 
+    padding: 6px ; 
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    align-items: center; 
+    border-radius: 0.5rem; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+}
+
+.wrapper:hover{
+    background-color: rgb(245 245 245);
+    cursor: pointer; 
+}
+
+.selected{
+    background-color: rgb(245 245 245);
+}
+
+.unselected{
+    background-color: white; 
+}
+
+.container{
+    flex: 1 1 0%; 
+    min-width: 0; 
+}
+
+
+.container>div{
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+}
+
+.container>div:focus{
+    outline: none;
+}
+
+
+
+.conversation{
+    /* background: #000; */
+    height: 2.5rem;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+}
+
+.name{
+    /* background: #000; */
+    /* margin-left: 8px; */
+    font-weight: 500; 
+    color: #3666ce; 
+}
+
+.dateTime{
+    /* background: #000; */
+    font-size: 0.75rem;
+    line-height: 1rem; 
+    font-weight: 300; 
+    color: #9CA3AF; 
+}
+
+.msg{
+    /* background: #000; */
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    overflow: hidden;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+
+.hasSeen{
+    color: #6B7280; 
+}
+
+.hasNotSeen{
+    font-weight: 500; 
+    color: #000000; 
+}

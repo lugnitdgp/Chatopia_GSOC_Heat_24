@@ -1,0 +1,44 @@
+.container{
+    display: flex; 
+    position: relative; 
+    padding: 0.75rem; 
+    /* margin-left: 0.75rem; 
+    margin-left: 0.875rem;  */
+    margin-top: 4px;
+    align-items: center; 
+    border-radius: 0.5rem; 
+    width: 100%; 
+    background-color: var(--bg-color); 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+    cursor: pointer; 
+}
+
+.container:hover{
+    background-color: var(--fg-color); 
+}
+
+.userInfo{
+    flex: 1 1 0%; 
+    min-width: 0; 
+}
+
+.info:focus{
+    outline: none; 
+}
+
+.info>div{
+    display: flex; 
+    margin-bottom: 0.25rem; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.info p{
+    padding-left: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 500; 
+    color: var(--text-color); 
+}

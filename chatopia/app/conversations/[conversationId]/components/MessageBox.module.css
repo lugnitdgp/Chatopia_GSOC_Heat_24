@@ -1,0 +1,91 @@
+.container{
+    display: flex; 
+    padding: 1rem; 
+    gap: 0.75rem; 
+    
+}
+
+.ownContainer{
+    justify-content: flex-end;
+}
+
+.ownAvatar{
+    order:2;
+}
+
+.msgBody{
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.5rem;  
+}
+
+.ownMsgBody{
+    align-items: flex-end; 
+}
+
+.msgInfo{
+    display: flex; 
+    gap: 0.25rem; 
+    align-items: center; 
+    justify-content: flex-start;
+}
+
+.msgSender{
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    color: #6B7280; 
+}
+
+.msgTime{
+    font-size: 0.75rem;
+    line-height: 1rem; 
+    color: #9CA3AF;     
+}
+
+.msg{
+    overflow: hidden; 
+    width: fit-content; 
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    background-color: steelblue;
+    color: #fff;
+}
+
+.ownMsg{
+    background-color: rgb(16, 117, 16);
+    color: #fff;
+}
+
+.imageMsg{
+    padding: 0; 
+    border-radius: 0.375rem; 
+}
+
+.img{
+    object-fit: cover; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+}
+
+.img:hover{
+    cursor: pointer;
+    transform: scale(1.1 , 1.1);
+}
+
+.textMsg{
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px; 
+}
+
+.seenStatus{
+    font-size: 0.75rem;
+    line-height: 1rem; 
+    font-weight: 300; 
+    color: #6B7280;     
+}
+
+
+
+
+

@@ -1,0 +1,270 @@
+.container{
+    position: relative; 
+    z-index: 50; 
+}
+
+.enterOne{
+    transition: all 0.5s ease-out;
+}
+
+.enterFromOne{
+    opacity: 0;
+}
+
+.enterToOne{
+    opacity: 0.75;
+}
+
+.leaveOne{
+    transition: all 0.5s ease-in;
+}
+
+.leaveFromOne{
+    opacity: 0.75;
+}
+
+.leaveToOne{
+    opacity: 0;
+}
+
+.containerOne{
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+    background-color: #000000; 
+    --bg-opacity: 0.4; 
+}
+
+.containerTwo{
+    overflow: hidden; 
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+}
+
+.containerThree{
+    overflow: hidden; 
+    position: absolute; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+}
+
+.containerFour{
+    display: flex; 
+    position: fixed; 
+    top: 0;
+    bottom: 0; 
+    right: 0; 
+    padding-left: 2.5rem; 
+    max-width: 100%; 
+    pointer-events: none; 
+}
+
+.enterTwo{
+    transform: translateX(0);
+    transition: all 0.5s ease-in-out;
+}
+
+.enterFromTwo{
+    transform: translateX(100%);
+}
+
+.enterToTwo{
+    transform: translateX(0);
+}
+
+.leaveTwo{
+    transform: translateX(0);
+    transition: all 0.5s ease-in-out;   
+}
+
+.leaveToTwo{
+    transform: translateX(100%);
+}
+
+.panel{
+    width: 100vw; 
+    max-width: 28rem; 
+    pointer-events: auto;     
+}
+
+.cont{
+    display: flex; 
+    overflow-y: scroll; 
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem; 
+    flex-direction: column; 
+    height: 100%; 
+    background-color: #ffffff; 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);  
+}
+
+.contOne{
+    padding-left: 1rem;
+    padding-right: 1rem; 
+}
+
+.contTwo{
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: flex-start; 
+}
+
+
+.contThree{
+    height: 1.75rem;
+    display: flex; 
+    margin-left: 0.75rem; 
+    align-items: center;
+}
+
+.closeBtn{
+    border-radius: 0.375rem; 
+    color: #9CA3AF; 
+    background-color: #ffffff; 
+}
+
+.closeBtn:hover{
+    color: #111827; 
+    background-color: #F9FAFB; 
+}
+
+.closeBtn:focus{
+    outline: none;
+}
+
+.closeBtn span{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0; 
+}
+
+.contFour{
+    position: relative; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    margin-top: 1.5rem; 
+    flex: 1 1 0%; 
+}
+
+.contFive{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar{
+    margin-bottom: 0.5rem; 
+}
+
+.status{
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    color: #6B7280; 
+}
+
+.deleteWrapper{
+    display: flex; 
+    margin-top: 2rem;
+    margin-bottom: 2rem; 
+    gap: 2.5rem; 
+}
+
+.deleteWrapper>div{
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.75rem; 
+    align-items: center; 
+}
+
+.deleteWrapper>div:hover{
+    opacity: 0.75; 
+    cursor: pointer;
+}
+
+.deleteBtn{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 9999px; 
+    width: 2.5rem; 
+    height: 2.5rem; 
+}
+
+.deleteText{
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 300; 
+}
+
+.userWrapper{
+    padding-top: 1.25rem; 
+    padding-bottom: 1.25rem; 
+    width: 100%; 
+}
+
+.dl{
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    margin-top: 2rem; 
+}
+
+.dtOne{
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 500; 
+    color: #6B7280; 
+}
+
+.ddOne{
+    margin-top: 0.25rem; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    color: #111827; 
+}
+
+
+@media (min-width: 640px){
+    .contOne{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem; 
+    }
+
+    .contFour{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem; 
+    }
+
+    .userWrapper{
+        padding-left: 0;
+        padding-right: 0; 
+        padding-top: 0; 
+    }
+
+    .dl{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem; 
+        margin-top: 1.5rem; 
+    }
+
+    .dtOne{
+        width: 10rem; 
+        flex-shrink: 0;
+    }
+
+    .ddOne{
+        grid-column: span 2 / span 2; 
+    }
+}
