@@ -2,9 +2,9 @@
 
 ## Issues
 
--   Browse the [issues](https://github.com/Ankit-Roy-CSE/Chatopia/issues) currently raised and select one that you would like to work on.
+-   Browse the [issues](https://github.com/Ankit-Roy-CSE/Chatopia_GSOC_Heat_24/issues) currently raised and select one that you would like to work on.
 -   Each issue is labeled according to its difficulty level.
--   If you encounter a new issue that isn't listed, feel free to raise a new issue on the [issues page](https://github.com/Ankit-Roy-CSE/Chatopia/issues) of the repository.
+-   If you encounter a new issue that isn't listed, feel free to raise a new issue on the [issues page](https://github.com/Ankit-Roy-CSE/Chatopia_GSOC_Heat_24/issues) of the repository.
 
 ## Steps to Contribute
 
