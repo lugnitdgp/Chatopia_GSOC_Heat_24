@@ -89,7 +89,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
       console.log("active list:" , activeList);
       // const activeEmails = activeList.map((activeUser)=>activeUser.email );
       // console.log("active emails:" , activeEmails);
-      const isActive = activeList.includes(otherUser.email);
+      const isActive = activeList.includes(otherUser.email!);
 
     return (
         <div 
@@ -111,6 +111,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                 <div className={styles.conversation}>
                   <p className={styles.name}>
                     {data.name || otherUser.name}
+                    {data.isSelf && " (You)"}
                   </p>
                   {lastMessage?.createdAt && (
                     <p className={styles.dateTime}>

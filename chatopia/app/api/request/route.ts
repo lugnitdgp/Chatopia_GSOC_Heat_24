@@ -12,9 +12,17 @@ export async function POST(request: Request) {
             return new NextResponse('Unauthorized', { status: 401 });
         }
 
-        // User cannot add themselves as a contact
+        // User can add themselves as a contact
         if (currentUser.email === email) {
-            return new NextResponse('Cannot add yourself as a contact', { status: 400 });
+            await prisma.request.create({
+                data: {
+                    senderId: currentUser.id,
+                    recverId: currentUser.id,
+                    status: 'accepted'
+                }
+            });
+            
+            return new NextResponse('Success', { status: 200 });
         }
 
         // Obtain the user to be added as a contact

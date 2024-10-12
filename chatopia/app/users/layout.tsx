@@ -37,7 +37,7 @@ export default async function UsersLayout({
   return (
       <Sidebar>
         <div style={{height:"100vh" , display:"flex"}}>
-          <UserList items={contacts} />
+          <UserList currentUserId={currentUser.id} items={contacts} />
           {children}
           <RequestList sentUsers={sentUsers} recvdUsers={receivedUsers}/>
         </div>

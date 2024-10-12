@@ -57,6 +57,7 @@ const Header: React.FC<HeaderProps> = ({conversation}) => {
               <div className={styles.textContainer}>
                 <div>
                   {conversation.name || otherUser.name}
+                  {conversation.isSelf && " (You)"}
                 </div>
                 <div className={styles.status}>
                   {statusText}
