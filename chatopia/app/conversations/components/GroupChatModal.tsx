@@ -56,7 +56,7 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
       router.refresh();
       onClose();
     })
-    .catch(() => toast.error('Something went wrong'))
+    .catch(e => toast.error(e.response.data || 'Something went wrong'))
     .finally(() => setIsLoading(false))
   }
 

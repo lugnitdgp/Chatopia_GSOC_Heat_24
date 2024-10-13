@@ -25,6 +25,7 @@ export async function POST(request : Request){
         }
 
 
+        //If group conversation request, create a new group
         if (isGroup) {
             const newConversation = await prisma.conversation.create({
             data: {
@@ -153,8 +154,11 @@ export async function POST(request : Request){
         }
       });
 
+        //Filter out common group conversations
+        const commonNonGroupConversations = commonConversations.filter(c => !c.isGroup);
+      
         // Extracting the conversation if it exists
-        const singleConversation = commonConversations[0];
+        const singleConversation = commonNonGroupConversations[0];
 
         // If conversation exists , return the conversation
         if (singleConversation) {
