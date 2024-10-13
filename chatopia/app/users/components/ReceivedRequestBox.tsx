@@ -13,7 +13,8 @@ interface RecievedRequestBoxProps {
 const RequestBox: React.FC<RecievedRequestBoxProps> = ({data , setData}) => {
     const handleAccept = () => {
         axios.post('/api/request/accept', { 
-            userId: data.id
+            userId: data.id,
+            userEmail: data.email
         })
         
         setData((prev: User[]) => prev.filter((user) => user.id !== data.id));
