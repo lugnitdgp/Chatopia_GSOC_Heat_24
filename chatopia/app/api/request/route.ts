@@ -37,6 +37,17 @@ export async function POST(request: Request) {
             return new NextResponse('User not found', { status: 404 });
         }
 
+        const reqFromReciever = await prisma.request.findFirst({
+            where: {
+                senderId: receiver.id,
+                recverId: currentUser.id
+            }
+        });
+
+        if (reqFromReciever) {
+            return new NextResponse(`Request from ${receiver.email} exists.`, { status: 400 })
+        }
+
         // Add the contact
         await prisma.request.create({
             data: {
@@ -50,6 +61,9 @@ export async function POST(request: Request) {
         return new NextResponse('Success', { status: 200 });
 
     } catch (error: any) {
+      if (error.code === 'P2002') {
+        return new NextResponse('Request already exists', { status: 400 });
+      }
       console.log(error, 'ERROR_MESSAGES');
       return new NextResponse('InternalError', { status: 500 });
     }
