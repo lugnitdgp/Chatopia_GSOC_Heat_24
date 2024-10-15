@@ -9,6 +9,7 @@ export async function POST(request : Request){
         const {
             userId,
             isGroup,
+            isSelf,
             members,
             name
           } = body;
@@ -67,6 +68,60 @@ export async function POST(request : Request){
         }
       });
   
+      
+      if (isSelf) {
+        if (currentUser.id !== userId) {
+            return NextResponse.json("Invalid Data", { status: 400 });
+        }
+
+        const currentUserConversationIds = currentUserConversations.map(uc => uc.conversationId);
+        const currentConversations = await prisma.conversation.findMany({
+            where: {
+              id: { in: currentUserConversationIds }
+            },
+            include: {
+              userConversations: {
+                include: {
+                  user: true
+                }
+              }
+            }
+          });
+
+          const currentUserSelfConversation = currentConversations.find(uc => uc.isSelf);
+
+          if (currentUserSelfConversation) {
+            return NextResponse.json({
+                type: "existing",
+                conversation: currentUserSelfConversation
+            })
+          } else {
+            const newCurrentUserSelfConversation = await prisma.conversation.create({
+                data: {
+                    isSelf: true,
+                    userConversations: {
+                      create: [
+                        // Connect the conversation to the current user
+                        { user: { connect: { id: currentUser.id } } }
+                      ]
+                    }
+                  },
+                  include: {
+                    userConversations: {
+                      include: {
+                        user: true,
+                      }
+                    }
+                  }
+            });
+
+            return NextResponse.json({
+                type: "new",
+                conversation: newCurrentUserSelfConversation
+            });
+          }
+      }
+
       // Find conversations for the user specified in the body
       const bodyUserConversations = await prisma.userConversation.findMany({
         where: {

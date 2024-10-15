@@ -11,10 +11,11 @@ import LoadingModal from "@/app/components/LoadingModal";
 import {socket} from "@/socket";
 
 interface UserBoxProps {
-    data: User
+    data: User,
+    isSelf: boolean
 }
 
-const UserBox: React.FC<UserBoxProps> = ({data}) => {
+const UserBox: React.FC<UserBoxProps> = ({data, isSelf}) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -23,7 +24,8 @@ const UserBox: React.FC<UserBoxProps> = ({data}) => {
         setIsLoading(true);
     
         axios.post('/api/conversations', { 
-          userId: data.id
+          userId: data.id,
+          isSelf
         })
         .then((res) => {
           if(res.data.type === 'new'){
@@ -45,6 +47,7 @@ const UserBox: React.FC<UserBoxProps> = ({data}) => {
               <div>
                 <p>
                   {data.name}
+                  {isSelf && " (You)"}
                 </p>
               </div>
             </div>

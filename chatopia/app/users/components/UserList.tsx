@@ -10,10 +10,11 @@ import GroupChatModal from "./ContactModal";
 import ContactModal from "./ContactModal";
 
 interface UserListProps {
-  items: User[]
+  items: User[],
+  currentUserId: string
 };
 
-const UserList: React.FC<UserListProps> = ({items}) => {
+const UserList: React.FC<UserListProps> = ({items, currentUserId}) => {
     const {isDark ,setIsDark} = useContext(ThemeContext);
     const [isModalOpen, setIsModalOpen] = useState(false);
   
@@ -35,7 +36,7 @@ const UserList: React.FC<UserListProps> = ({items}) => {
                 </div>
             </div>
                 {items.map((item) => (
-                    <UserBox key={item.id} data={item}/>
+                    <UserBox isSelf={currentUserId === item.id} key={item.id} data={item}/>
                 ))}
             
         </aside>

@@ -51,6 +51,7 @@ model Conversation {
   lastMessageAt DateTime @default(now())
   name String?
   isGroup Boolean?
+  isSelf Boolean?
   image String?
 
   messages Message[]
