@@ -4,6 +4,7 @@ import axios from "axios";
 import { User } from "@prisma/client";
 import Avatar from "@/app/components/Avatar";
 import styles from './RequestBox.module.css';
+import { socket } from "@/socket";
 
 interface RecievedRequestBoxProps {
     data: User
@@ -15,15 +16,21 @@ const RequestBox: React.FC<RecievedRequestBoxProps> = ({data , setData}) => {
         axios.post('/api/request/accept', { 
             userId: data.id,
             userEmail: data.email
-        })
+        }).then(res => {
+            socket.emit("accept_friend_request", res.data);
+        });
         
         setData((prev: User[]) => prev.filter((user) => user.id !== data.id));
     }
 
     const handleDecline = () => {
         axios.post('/api/request/decline', { 
-            userId: data.id
-        })
+            userId: data.id,
+            userEmail: data.email
+        }).then(res => {
+            socket.emit("reject_friend_request", res.data);
+        });
+        
         setData((prev: User[]) => prev.filter((user) => user.id !== data.id));
     }
 

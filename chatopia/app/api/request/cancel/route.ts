@@ -15,8 +15,8 @@ export async function POST(request: Request) {
         // Obtain the request to be declined
         const req = await prisma.request.findFirst({
             where: {
-                senderId: userId,
-                recverId: currentUser.id,
+                senderId: currentUser.id,
+                recverId: userId,
                 status: 'pending'
             }
         });
@@ -33,15 +33,15 @@ export async function POST(request: Request) {
             }
         });
 
-        const sender = await prisma.user.findUnique({
+        const receiver = await prisma.user.findUnique({
             where: {
                 email: userEmail
             }
         });
 
         return NextResponse.json({
-            sender,
-            receiver: currentUser
+            sender: currentUser,
+            receiver
         }, { status: 200 });
 
     } catch (error: any) {

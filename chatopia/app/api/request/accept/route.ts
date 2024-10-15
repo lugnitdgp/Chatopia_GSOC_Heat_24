@@ -82,7 +82,16 @@ export async function POST(request: Request) {
             }
         });
 
-        return new NextResponse('Success', { status: 200 });
+        const sender = await prisma.user.findUnique({
+            where: {
+                email: userEmail
+            }
+        });
+
+        return NextResponse.json({
+            sender,
+            receiver: currentUser
+        }, { status: 200 });
 
     } catch (error: any) {
       console.log(error, 'ERROR_MESSAGES');

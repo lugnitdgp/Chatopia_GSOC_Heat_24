@@ -22,7 +22,11 @@ export async function POST(request: Request) {
                 }
             });
             
-            return new NextResponse('Success', { status: 200 });
+            return NextResponse.json({
+                sender: currentUser,
+                receiver: currentUser,
+                status: 'accepted'
+            }, { status: 200 });
         }
 
         // Obtain the user to be added as a contact
@@ -57,8 +61,11 @@ export async function POST(request: Request) {
             }
         });
         
-
-        return new NextResponse('Success', { status: 200 });
+        return NextResponse.json({
+            sender: currentUser,
+            receiver,
+            status: 'pending'
+        }, { status: 200 });
 
     } catch (error: any) {
       if (error.code === 'P2002') {
