@@ -43,7 +43,7 @@
 }
 
 .msg{
-    overflow: hidden; 
+    position: relative;
     width: fit-content; 
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -96,6 +96,33 @@
 .textMsg{
     padding: 0.5rem 0.75rem;
     border-radius: 9999px; 
+}
+
+.fwdBox{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(100%);
+    display: none;
+}
+.msg:hover .fwdBox, .fwdBox:hover {
+    display: block;
+}
+
+.fwdBtn{
+    border: none;
+    outline: none;
+    padding: .5rem;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    border-radius: 0.375rem;
+}
+
+.fwdMsg{
+    margin-top: -.1rem;
+    opacity: .7;
+    font-size: .75rem;
 }
 
 .seenStatus{
