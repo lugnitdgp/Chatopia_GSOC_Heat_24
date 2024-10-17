@@ -104,7 +104,9 @@
     right: 0;
     transform: translateY(100%);
     display: none;
+    z-index: 2;
 }
+
 .msg:hover .fwdBox, .fwdBox:hover {
     display: block;
 }
