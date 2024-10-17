@@ -13,6 +13,7 @@ import { toast } from "react-hot-toast";
 import styles from "./GroupChatModal.module.css";
 import Image from "next/image";
 import { CldUploadButton } from "next-cloudinary";
+import { socket } from "@/socket";
 
 interface GroupChatModalProps {
   isOpen?: boolean;
@@ -52,7 +53,12 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
       ...data,
       isGroup: true
     })
-    .then(() => {
+    .then(response => {
+      if (response.data.isGroup) { 
+        alert(response.data.id);
+        socket.emit('new_conversation', response.data);
+      }
+
       router.refresh();
       onClose();
     })
