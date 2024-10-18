@@ -10,6 +10,7 @@ import {
     SubmitHandler, 
     useForm
   } from "react-hook-form";
+import toast from "react-hot-toast";
 
 
 interface ContactModalProps {
@@ -37,6 +38,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setValue('email', '');
         axios.post('/api/request', data)
+        .catch(e => toast.error(e.response.data || "Something went wrong!"));
     };
 
     return (
