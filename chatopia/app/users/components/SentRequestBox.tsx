@@ -4,6 +4,7 @@ import axios from "axios";
 import { User } from "@prisma/client";
 import Avatar from "@/app/components/Avatar";
 import styles from './RequestBox.module.css';
+import { socket } from "@/socket";
 
 interface SentRequestBoxProps {
     data: User
@@ -12,9 +13,13 @@ interface SentRequestBoxProps {
 
 const RequestBox: React.FC<SentRequestBoxProps> = ({data ,  setData}) => {
     const handleCancel = () => {
-        axios.post('/api/request/decline', { 
-            userId: data.id
-        })
+        axios.post('/api/request/cancel', { 
+            userId: data.id,
+            userEmail: data.email
+        }).then(res => {
+            socket.emit("cancel_friend_request", res.data)
+        });
+
         setData((prev: User[]) => prev.filter((user) => user.id !== data.id));
     }
 

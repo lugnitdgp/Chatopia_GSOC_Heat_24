@@ -11,6 +11,8 @@ import {
     useForm
   } from "react-hook-form";
 import toast from "react-hot-toast";
+import { socket } from "@/socket";
+import { useSession } from "next-auth/react";
 
 
 interface ContactModalProps {
@@ -20,6 +22,7 @@ interface ContactModalProps {
 }
 
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
+    const { data: session, status } = useSession();
 
     const {
         register,
@@ -38,6 +41,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setValue('email', '');
         axios.post('/api/request', data)
+        .then(res => socket.emit("send_friend_request", res.data))
         .catch(e => toast.error(e.response.data || "Something went wrong!"));
     };
 
@@ -60,6 +64,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                   <button
                         type="submit"
                         className={styles.send}
+                        disabled={status === "loading"}
                     >
                         Add Contact
                   </button>

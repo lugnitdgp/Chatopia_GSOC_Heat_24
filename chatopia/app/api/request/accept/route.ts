@@ -5,7 +5,7 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 export async function POST(request: Request) {
     try {
         const currentUser = await getCurrentUser();
-        const {userId} = await request.json();
+        const {userId, userEmail} = await request.json();
 
         // If user is not logged in, return unauthorized
         if (!currentUser?.id || !currentUser?.email) {
@@ -50,7 +50,48 @@ export async function POST(request: Request) {
             }
         });
 
-        return new NextResponse('Success', { status: 200 });
+        await prisma.user.update({
+            where: {
+                id: userId
+            },
+            data: {
+                contacts: {
+                    push: currentUser.email
+                }
+            }
+        });
+
+        await prisma.user.update({
+            where: {
+                id: currentUser.id
+            },
+            data: {
+                contacts: {
+                    push: userEmail
+                }
+            }
+        });
+
+        // Accept the request
+        await prisma.request.update({
+            where: {
+                id: req.id
+            },
+            data: {
+                status: 'accepted'
+            }
+        });
+
+        const sender = await prisma.user.findUnique({
+            where: {
+                email: userEmail
+            }
+        });
+
+        return NextResponse.json({
+            sender,
+            receiver: currentUser
+        }, { status: 200 });
 
     } catch (error: any) {
       console.log(error, 'ERROR_MESSAGES');
