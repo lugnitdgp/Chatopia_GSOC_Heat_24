@@ -56,11 +56,20 @@ const Form = () => {
     };
 
     const handleUpload = (result: any) => {
-        axios.post('/api/messages', {
-          image: result?.info?.secure_url,
-          conversationId
-        })
+        console.log(result);
         
+        axios.post('/api/messages', {
+          file: result?.info?.secure_url,
+          fileType: result?.info?.resource_type,
+          conversationId
+        }).then((response) => {
+            socket.emit('send_message', response.data);
+            socket.emit('update_conversation', response.data);
+        })
+    };
+
+    const handleError = (e: any) => {
+        console.error(e);
     };
 
     const handleEmojiSelect = (emoji: any) => {
@@ -76,7 +85,8 @@ const Form = () => {
               className={styles.uploadContainer}
                 options={{ maxFiles: 1 }}
                 onSuccess={handleUpload}
-                uploadPreset="wuuk33fv"
+                onError={handleError}
+                uploadPreset="ml_default"
               >
                 <HiPhoto size={30} className={styles.photoIcon} />
                 <span style={{display:"flex", justifyContent:"center" , alignItems:"center"}}> Image </span>

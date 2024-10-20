@@ -71,7 +71,8 @@ model Conversation {
 model Message {
   id String @id @default(uuid()) @db.Uuid
   body String?
-  image String?
+  file String?
+  fileType String?
   createdAt DateTime @default(now())
 
   conversationId String @db.Uuid
