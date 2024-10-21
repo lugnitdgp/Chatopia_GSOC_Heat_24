@@ -1,6 +1,18 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb";
+import getConversations from "@/app/actions/getConversations";
+
+export async function GET(request: Request) {
+    try {
+        const conversations = await getConversations();
+
+        return NextResponse.json(conversations, { status: 200 });
+    } catch (e) {
+        console.log(e, "ERROR_CONVERSATIONS_GET");
+        return new NextResponse("Internal Error", { status: 500});
+    }
+}
 
 export async function POST(request : Request){
     try{

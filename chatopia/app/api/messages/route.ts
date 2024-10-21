@@ -12,7 +12,8 @@ export async function POST(
       message,
       file,
       fileType,
-      conversationId
+      conversationId,
+      isForwarded
     } = body;
 
     // If user is not logged in, return unauthorized
@@ -26,6 +27,7 @@ export async function POST(
         body: message,
         file: file,
         fileType,
+        isForwarded: !!isForwarded,
         conversation: {
           connect: { id: conversationId }
         },

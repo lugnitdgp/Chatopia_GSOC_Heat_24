@@ -5,12 +5,12 @@ import { FullMessageType } from "@/app/types";
 import { useSession } from "next-auth/react";
 import { format } from "date-fns";
 import { useState } from "react";
-import Image from "next/image";
 import ImageModal from "./ImageModal";
 import clsx from "clsx";
 import styles from "./MessageBox.module.css"
 import { IoDocument, IoImage } from "react-icons/io5";
 import Link from "next/link";
+import ForwardModal from "./ForwardModal";
 
 interface MessageBoxProps {
     data: FullMessageType;
@@ -19,7 +19,7 @@ interface MessageBoxProps {
 
 const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
     const session = useSession();
-    const [imageModalOpen, setImageModalOpen] = useState(false);
+    const [fwdModalOpen, setFwdModalOpen] = useState<boolean>(false);
     const [imageOpen, setImageOpen] = useState<boolean>(false);
 
     const isOwn = session?.data?.user?.email === data?.sender?.email;
@@ -79,7 +79,21 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
                             </Link>
                         )
                     )}
+                    
+                     <div className={clsx(styles.fwdBox)}>
+                        <button className={clsx(styles.fwdBtn)} onClick={() => setFwdModalOpen(true)}>
+                            Forward
+                        </button>
+
+                        <ForwardModal setIsOpen={setFwdModalOpen} isOpen={fwdModalOpen} data={data} />
+                     </div>
                 </div>
+
+                {data.isForwarded && (
+                    <div className={clsx(styles.fwdMsg)}>
+                        <span>forwarded</span>
+                    </div>
+                )}
                 {isLast && isOwn && seenList.length > 0 && (
                     <div className={styles.seenStaus}>
                         {`Seen by ${seenList}`}

@@ -17,8 +17,6 @@ import React, { useState , useRef, useEffect } from "react";
 import Modal from "@/app/components/Modal";
 import {socket} from "@/socket";
 
-import { FileUpload } from 'primereact/fileupload';
-
 const Form = () => {
     const { conversationId } = useConversation();
     const [isEmojiVisible, setIsEmojiVisible] = useState(false);
@@ -35,7 +33,7 @@ const Form = () => {
       } = useForm<FieldValues>({
         defaultValues: {
           message: '',
-          image: ''
+          file: ''
         }
       });
 
