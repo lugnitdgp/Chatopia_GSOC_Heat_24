@@ -72,10 +72,10 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
       }, [userEmail, lastMessage]);
     
       const lastMessageText = useMemo(() => {
-        return lastMessage?.body || lastMessage?.file ? "Sent a file" : "Started a conversation";
+        return (lastMessage?.body) || (lastMessage?.file ? "Sent a file" : "Started a conversation");
       }, [lastMessage]);
 
-      console.log("active list:" , activeList);
+      console.log("active list:", activeList);
       // const activeEmails = activeList.map((activeUser)=>activeUser.email );
       // console.log("active emails:" , activeEmails);
       const isActive = activeList.includes(otherUser.email!);
