@@ -9,10 +9,11 @@ interface SelectProps {
   onChange: (value: Record<string, any>) => void;
   options: Record<string, any>[];
   disabled?: boolean;
+  isMulti?: boolean;
 }
 
 const Select: React.FC<SelectProps> = ({
-    label,value,onChange,options,disabled
+    label,value,onChange,options,disabled,isMulti
 }) => {
   return ( 
   <div className={styles.wrapper}>
@@ -26,7 +27,7 @@ const Select: React.FC<SelectProps> = ({
         isDisabled={disabled}
         value={value}
         onChange={onChange}
-        isMulti
+        isMulti={isMulti || true}
         options={options}
         menuPortalTarget={document.body}
         styles={{

@@ -72,21 +72,10 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
       }, [userEmail, lastMessage]);
     
       const lastMessageText = useMemo(() => {
-        // If last message of conversation is an image
-        if (lastMessage?.image) {
-          return 'Sent an image';
-        }
-        
-        // If last message of conversation is a text message
-        if (lastMessage?.body) {
-          return lastMessage.body;
-        }
-        
-        // If no last message exists
-        return "Started a conversation";
+        return (lastMessage?.body) || (lastMessage?.file ? "Sent a file" : "Started a conversation");
       }, [lastMessage]);
 
-      console.log("active list:" , activeList);
+      console.log("active list:", activeList);
       // const activeEmails = activeList.map((activeUser)=>activeUser.email );
       // console.log("active emails:" , activeEmails);
       const isActive = activeList.includes(otherUser.email!);

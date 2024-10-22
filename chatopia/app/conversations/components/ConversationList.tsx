@@ -85,6 +85,10 @@ const ConversationList: React.FC<ConversationListProps> = ({
         // To update the conversation list when a new conversation is created
         const newConversationHandler = (conversation: FullConversationType) => {
             // Check if the conversation to be added already exists in the conversation list
+            if (!conversation.userConversations.find(uc => uc.user.email === userEmail)) {
+                return;
+            }
+
             setItems((current) => {
                 if (find(current, { id: conversation.id })) {
                   return current;

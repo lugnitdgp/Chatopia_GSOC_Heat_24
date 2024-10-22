@@ -73,6 +73,7 @@ model Message {
   body String?
   file String?
   fileType String?
+  isForwarded Boolean?
   createdAt DateTime @default(now())
 
   conversationId String @db.Uuid
