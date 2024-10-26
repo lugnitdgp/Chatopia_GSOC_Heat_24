@@ -15,7 +15,12 @@ let onlineUsers = [];
 app.prepare().then(() => {
   const httpServer = createServer(handler);
 
-  const io = new Server(httpServer);
+  const io = new Server(httpServer, {
+  cors: {
+    origin: "*", // Replace with allowed origin
+    methods: ["GET", "POST"]
+  }
+});
 
   io.on("connection", (socket) => {
     console.log(`User connected ${socket.id}`);
