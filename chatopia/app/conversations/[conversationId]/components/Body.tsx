@@ -31,6 +31,8 @@ const Body: React.FC<BodyProps> = ({ initialMessages }) => {
     // Body component will listen for new messages and update the state whenever a new message is received through the socket
 
     useEffect(() => {
+      //getting the notification permission
+      Notification.requestPermission();
       // Update the message receive in the current message
       const updateMessageHandler = (newMessage: FullMessageType) => {
         // Update the message in the state only if the message belongs to the current conversation
@@ -63,6 +65,10 @@ const Body: React.FC<BodyProps> = ({ initialMessages }) => {
         // Render received message from server only if it belongs to the current conversation
         if(message.conversationId === conversationId){
           // Add the new message to the state
+          console.log(Notification.permission);
+          if (document.visibilityState === 'hidden') {
+            new Notification(`${message.sender.name} sent a msg`);
+          }
           setMessages((current) =>{ 
             if(find(current, {id: message.id})){
               return current;
