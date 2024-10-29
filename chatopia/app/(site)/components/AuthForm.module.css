@@ -1,7 +1,12 @@
 .wrapper{
     margin-top: 2rem; 
 }
-
+.errorMessage {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
 .container{
     padding-left: 1rem;
     padding-right: 1rem; 
